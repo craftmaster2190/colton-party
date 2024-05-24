@@ -1,0 +1,23 @@
+<h2 class="display-6">Cast Your Vote</h2>
+<ul class="list-group">
+  <li *ngFor="let vote of votes" class="list-group-item">
+    <div>{{ vote }}</div>
+    <app-rating-input *ngIf="myVotes" [value]="myVotes[vote]"
+                      (ratingChange)="setMyVote(vote, $event)"></app-rating-input>
+
+    <app-is-admin>
+      <button class="btn btn-danger btn-sm float-end" (click)="removeVote(vote)">X</button>
+    </app-is-admin>
+  </li>
+</ul>
+
+<app-is-admin>
+  <div>
+    <input #input class="form-control is-invalid" type="text" placeholder="Add Vote"
+           (keyup.enter)="addVote(input.value); input.value = ''">
+  </div>
+
+  <div>
+
+  </div>
+</app-is-admin>

@@ -1,0 +1,8 @@
+<h2>Admin Vote Results</h2>
+<ul class="list-group list-group-flush">
+  <li *ngFor="let voteResult of voteResults" class="list-group-item">
+    {{voteResult.voteName}} -
+    Votes: <b>{{voteResult.countOfVotes}}</b>
+    Average: <b>{{voteResult.averageVote | number: '1.0-2'}}</b>
+  </li>
+</ul>

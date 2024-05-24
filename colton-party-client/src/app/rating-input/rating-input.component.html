@@ -1,0 +1,7 @@
+<form class="rating">
+    <span class="icon star-1" [class.selected]="value >= 1" (click)="setValue(1)">★</span>
+    <span class="icon star-2" [class.selected]="value >= 2" (click)="setValue(2)">★</span>
+    <span class="icon star-3" [class.selected]="value >= 3" (click)="setValue(3)">★</span>
+    <span class="icon star-4" [class.selected]="value >= 4" (click)="setValue(4)">★</span>
+    <span class="icon star-5" [class.selected]="value >= 5" (click)="setValue(5)">★</span>
+</form>

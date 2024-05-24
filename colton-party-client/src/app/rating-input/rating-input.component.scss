@@ -1,0 +1,20 @@
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  font-size: 40px;
+
+  .icon {
+    cursor: pointer;
+    color: #000;
+
+    &:hover {
+      color: orange;
+    }
+
+    &.selected {
+      color: #FFD700;
+    }
+  }
+}

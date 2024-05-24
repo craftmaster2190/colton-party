@@ -1,0 +1,35 @@
+<div *ngIf="bingoEnabled">
+  <div class="row text-center">
+    <div *ngFor="let letter of bingoLetters" class="col bingo-{{letter}}">
+      <span class=" display-6 bingo-letter bingo-letter-{{letter}}">{{ letter }}</span>
+      <div *ngFor="let numb of numberMap[letter]" class="bingo-ball"
+           [class.is-most-recent]="numb === mostRecentBingoNumber">
+        {{ letter }} {{ numb }}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!drawnNumbers.length" class="no-drawn-balls-yet">
+    Let's get ready to play!
+  </div>
+
+  <app-is-admin>
+    <div class="admin-recent-balls">
+      <b>Most recent draw:</b>
+      <div *ngFor="let num of adminRecentNumbers; let last = last">
+      <span class="bingo-ball admin-bingo-ball"
+            [class.is-most-recent]="last">{{ bingoLetter(num) }} {{ num }}</span> {{ jokes[num] }}
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="drawBingoNumber()">Draw Bingo Number</button>
+    <button class="btn btn-primary" (click)="clearBingo()">Clear Bingo</button>
+  </app-is-admin>
+</div>
+
+<app-is-admin>
+  <div>
+    <button class="btn btn-danger" [class.active]="bingoEnabled"
+            (click)="toggleBingo()">{{ bingoEnabled ? "Disable Bingo" : "Enable Bingo" }}
+    </button>
+  </div>
+</app-is-admin>

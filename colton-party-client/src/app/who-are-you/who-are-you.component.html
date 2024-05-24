@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <h4 class="modal-title">Welcome to Colton's 35ths Birthday Party!</h4>
+</div>
+<div class="modal-body">
+  <p>Please sign the guest list.</p>
+  <p>What is your name?</p>
+  <input [(ngModel)]="name" placeholder="Your name?" (change)="onChangeName()" (submit)="changeName()" (keyup.enter)="changeName()">
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="changeName()">Let's Party</button>
+</div>
