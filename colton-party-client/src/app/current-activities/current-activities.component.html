@@ -10,5 +10,7 @@
 </ul>
 
 <app-is-admin>
-  <input #input class="form-control is-invalid" type="text" placeholder="Add Activity" (keyup.enter)="addActivity(input.value); input.value = ''">
+  <form>
+    <input #input class="form-control is-invalid" type="text" placeholder="Add Activity" (keyup.enter)="addActivity(input.value); input.value = ''">
+  </form>
 </app-is-admin>

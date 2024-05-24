@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {interval, switchMap} from "rxjs";
 import {DecimalPipe, JsonPipe, NgForOf} from "@angular/common";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 interface VoteResult {
   voteName: string; // Client only
@@ -26,6 +27,7 @@ export class AdminVoteStatsComponent {
   voteResults: VoteResult[] = [];
   constructor(private readonly httpClient: HttpClient) {
     interval(Math.random() * 2000 + 10_000).pipe(
+      takeUntilDestroyed(),
       switchMap(() => this.httpClient.get<Votes>('/api/votes'))
     ).subscribe((voteResults) => this.voteResults =
       Object.entries(voteResults).sort(([voteNameA, voteResultA], [voteNameB, voteResultB]) => {

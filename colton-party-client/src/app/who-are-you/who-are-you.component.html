@@ -4,8 +4,10 @@
 <div class="modal-body">
   <p>Please sign the guest list.</p>
   <p>What is your name?</p>
-  <input [(ngModel)]="name" placeholder="Your name?" (change)="onChangeName()" (submit)="changeName()" (keyup.enter)="changeName()">
+  <form>
+    <input [(ngModel)]="name" name="name" placeholder="Your name?" (change)="onChangeName()" (submit)="changeName()" (keyup.enter)="changeName()">
+  </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-primary" (click)="changeName()">Let's Party</button>
+  <button type="button" class="btn btn-primary" [disabled]="isLoading" (click)="changeName()">Let's Party</button>
 </div>

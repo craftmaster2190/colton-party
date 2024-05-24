@@ -44,6 +44,8 @@ export class WhoAreYouComponent {
           tap(() => this.activeModal.close(), () => this.isLoading = false)
         ).subscribe(() => {
       });
+    } else {
+      console.log("Name is empty")
     }
   }
 

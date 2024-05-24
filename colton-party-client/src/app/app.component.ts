@@ -36,12 +36,16 @@ export class AppComponent implements OnInit, AfterViewInit {
           centered: true,
           backdrop: 'static',
           keyboard: false
-        });
+        }).closed.subscribe(() => this.throwConfetti());
       }
     });
   }
 
   ngAfterViewInit(): void {
+    this.throwConfetti();
+  }
+
+  private throwConfetti() {
     this.ngZone.runOutsideAngular(() => {
       for (let i = 0; i < Math.random() * 10 + 4; i++) {
         setTimeout(() => confetti({
@@ -72,6 +76,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   changeName() {
     this.modalService.open(WhoAreYouComponent, {
       centered: true
-    });
+    }).closed.subscribe(() => this.throwConfetti());
   }
 }
