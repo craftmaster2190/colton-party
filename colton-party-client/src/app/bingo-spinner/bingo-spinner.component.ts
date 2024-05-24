@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {CurrentStateService} from "../state/current-state.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {IsAdminComponent} from "../is-admin/is-admin.component";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-bingo-spinner',
@@ -10,7 +11,8 @@ import {IsAdminComponent} from "../is-admin/is-admin.component";
   imports: [
     NgForOf,
     NgIf,
-    IsAdminComponent
+    IsAdminComponent,
+    FormsModule
   ],
   templateUrl: './bingo-spinner.component.html',
   styleUrl: './bingo-spinner.component.scss'
@@ -24,6 +26,8 @@ export class BingoSpinnerComponent implements OnChanges {
   bingoLetters = ['B', 'I', 'N', 'G', 'O'];
   numberMap: Record<string, number[]> = {};
   @Input() bingoEnabled!: boolean;
+
+  isRiggedEnabled: boolean = false;
 
   jokes: Record<number, string> = {
     // B1
@@ -116,7 +120,7 @@ export class BingoSpinnerComponent implements OnChanges {
   }
 
   drawBingoNumber() {
-    this.httpClient.put<number>(`/api/bingo/draw`, null).subscribe(drawnNumber => {
+    this.httpClient.put<number>( this.isRiggedEnabled ? `/api/bingo/draw-rigged` : `/api/bingo/draw`, null).subscribe(drawnNumber => {
       this.adminRecentNumbers.push(drawnNumber);
       if (this.adminRecentNumbers.length > 5) {
         this.adminRecentNumbers.shift();
@@ -134,6 +138,12 @@ export class BingoSpinnerComponent implements OnChanges {
     if (confirm("Clear Bingo?")) {
       this.httpClient.delete<void>(`/api/bingo/reset`).subscribe();
       this.adminRecentNumbers.length = 0;
+    }
+  }
+
+  toggleRigged() {
+    if (confirm("Change Bingo Type?")) {
+      this.isRiggedEnabled = !this.isRiggedEnabled;
     }
   }
 }

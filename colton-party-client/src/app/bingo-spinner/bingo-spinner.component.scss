@@ -3,10 +3,33 @@
   display: block;
 }
 
+.bingo-container {
+  margin-bottom: 24px;
+}
+
+.bingo-ball-row:not(:first-of-type) {
+  padding-left: 0;
+}
+
+.bingo-ball-row:not(:last-of-type) {
+  padding-right: 0;
+}
+
+.bingo-ball-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1px;
+}
+
 .bingo-ball {
   border-radius: 50%;
   border: 2px solid black;
   text-align: center;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .admin-recent-balls {

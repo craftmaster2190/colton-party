@@ -83,6 +83,18 @@ public class StateController {
     return drawn;
   }
 
+  @PutMapping("/bingo/draw-rigged")
+  public int drawBingoRigged() {
+    var winner = 52;
+    var numbers = new ArrayList<>(Arrays.asList(1, 3, 9, 12, 15, 17, 19, 25, 35, 37, 41, 46, 49 ,51, 60, 61, 72, 74));
+    numbers.removeAll(gameState.getDrawnBingoNumbers());
+
+    var drawn = (numbers.isEmpty()) ? winner : numbers.get((int) (Math.random() * numbers.size()));
+    gameState.getDrawnBingoNumbers().add(drawn);
+    gameState.setMostRecentBingoNumber(drawn);
+    return drawn;
+  }
+
   @DeleteMapping("/bingo/reset")
   public void resetBingo() {
     gameState.getDrawnBingoNumbers().clear();
