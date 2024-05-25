@@ -11,6 +11,7 @@
 
 <app-is-admin>
   <div>
-    <input #input class="form-control is-invalid" type="text" placeholder="Add Activity" (keyup.enter)="addActivity(input.value); input.value = ''">
+    <input #input class="form-control" type="text" placeholder="Add Activity"
+           (keyup.enter)="addActivity(input.value); input.value = ''"  enterkeyhint="done">
   </div>
 </app-is-admin>
