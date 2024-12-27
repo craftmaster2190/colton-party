@@ -9,6 +9,7 @@ public class GameState {
   private final Deque<String> currentActivities = new ConcurrentLinkedDeque<>();
   private final Deque<String> currentVotes = new ConcurrentLinkedDeque<>();
   private volatile boolean bingoEnabled = false;
+  private volatile int bingoGameVersion = 0;
   private final Set<Integer> drawnBingoNumbers = ConcurrentHashMap.newKeySet();
   private volatile Integer mostRecentBingoNumber;
 }

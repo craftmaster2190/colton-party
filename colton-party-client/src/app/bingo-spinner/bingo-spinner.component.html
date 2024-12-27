@@ -23,11 +23,11 @@
             [class.is-most-recent]="last">{{ bingoLetter(num) }} {{ num }}</span> {{ jokes[num] }}
       </div>
     </div>
-    <form class="form-check form-switch float-end">
-      <input class="form-check-input" type="checkbox" role="switch" id="isRiggedEnabled" name="isRiggedEnabled"
-             (click)="toggleRigged()">
-      <label class="form-check-label" for="isRiggedEnabled">Draw {{ isRiggedEnabled ? "Batz" : "Regular" }}</label>
-    </form>
+<!--    <form class="form-check form-switch float-end">-->
+<!--      <input class="form-check-input" type="checkbox" role="switch" id="isRiggedEnabled" name="isRiggedEnabled"-->
+<!--             (click)="toggleRigged()" [checked]="isRiggedEnabled">-->
+<!--      <label class="form-check-label" for="isRiggedEnabled">Draw {{ isRiggedEnabled ? "Batz" : "Regular" }}</label>-->
+<!--    </form>-->
 
     <button class="btn btn-primary" (click)="drawBingoNumber()">Draw Bingo Number</button>
     <button class="btn btn-primary" (click)="clearBingo()">Clear Bingo</button>

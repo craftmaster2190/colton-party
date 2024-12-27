@@ -1,5 +1,6 @@
 package com.craftmaster2190.coltonparty.coltonpartyserver;
 
+import com.craftmaster2190.coltonparty.coltonpartyserver.bingo.BingoCard;
 import com.github.benmanes.caffeine.cache.*;
 import java.util.*;
 import java.util.stream.*;
@@ -99,6 +100,11 @@ public class StateController {
   public void resetBingo() {
     gameState.getDrawnBingoNumbers().clear();
     gameState.setMostRecentBingoNumber(null);
+  }
+
+  @GetMapping("/bingo/generate-card")
+  public BingoCard generateBingoCard() {
+    return BingoCard.generate();
   }
 
   @GetMapping("/votes")
